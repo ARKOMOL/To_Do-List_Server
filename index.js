@@ -37,6 +37,15 @@ async function run(){
     
         })
 
+            // delete Data 
+            app.delete('/toDoList/:id', async (req,res)=>{
+                const id = req.params.id;
+                const query ={_id: ObjectId(id)};
+                const deleteItem = await toDoCollection.deleteOne(query);
+                res.send(deleteItem);
+            })
+    
+
     
 
     }
