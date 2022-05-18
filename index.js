@@ -20,7 +20,13 @@ async function run(){
         await client.connect();
         const toDoCollection =client.db("toDoLIst").collection("list");
 
-   
+        // Get Data
+        app.get('/toDoList',async(req,res)=>{
+            const query = {};
+            const cursor = toDoCollection.find(query);
+            const todo = await cursor.toArray();
+            res.send(todo);
+        })
 
         //Post Data
 
